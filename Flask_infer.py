@@ -22,8 +22,8 @@ model_directory = 'model'
 model_file_name = f'./simple_rand_forest.pkl'
 model_columns_file_name = f'{model_directory}/model_columns.pkl'
 
-first_line = "jk ____"
-second_line = "this is second"
+first_line = "No prediciton made"
+second_line = "Initital prediction not made yet"
 
 
 
@@ -41,7 +41,12 @@ def predict():
             json_ = request.json #capture the json from POST
             query = pd.get_dummies(pd.DataFrame(json_))
             #query = query.reindex(columns=model_columns, fill_value=0)
-
+            print(query)
+            print(type(query)
+            print(" ")
+            print(" ")
+            print(" ")
+                  
             if(type(query) ==  str):
                 first_line = "request format inconsistant"
                 second_line =  "please dont send strings"
