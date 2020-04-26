@@ -53,13 +53,12 @@ def predict():
             query = pd.get_dummies(pd.DataFrame(json_))
             #query = query.reindex(columns=model_columns, fill_value=0)
                   
-                
+            prediction = list(clf.predict(query))
             if(len(prediction) > 1):
                 first_line = "request format inconsistant"
                 second_line =  "please send one pridiction at a time"
                 return jsonify(first_line + " " + second_line)
                 
-            prediction = list(clf.predict(query))
                         
 
             #return jsonify({'prediction': [int(x) for x in prediction]})
