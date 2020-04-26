@@ -22,7 +22,9 @@ model_directory = 'model'
 model_file_name = f'./simple_rand_forest.pkl'
 model_columns_file_name = f'{model_directory}/model_columns.pkl'
 
+global first_line
 first_line = "No prediciton made"
+global second_line
 second_line = "Initital prediction not made yet"
 
 
@@ -44,17 +46,14 @@ def predict():
                   
             prediction = list(clf.predict(query))
             if(len(prediction) > 1):
-                global first_line
-                global second_line
                 first_line = "request format inconsistant"
                 second_line =  "please send one pridiction at a time"
                 return jsonify(first_line + " " + second_line)
                 
 
-            global first_line
-            global second_line
+            
             first_line = "A new prediction has been made"
-            second_line = "your prediction is: " + prediction[0]
+            second_line = "your prediction is: " + str(prediction[0])
             #return jsonify({'prediction': [int(x) for x in prediction]})
             return jsonify(first_line + " " + second_line)
 
