@@ -39,23 +39,27 @@ def predict():
     if clf:
         try:
             json_ = request.json #capture the json from POST
-            query = pd.get_dummies(pd.DataFrame(json_))
-            #query = query.reindex(columns=model_columns, fill_value=0)
-            print(query)
-            print(type(query)
+            
+            print(json_)
+            print(type(json_))
             print(" ")
             print(" ")
             print(" ")
-                  
             if(type(query) ==  str):
                 first_line = "request format inconsistant"
                 second_line =  "please dont send strings"
+                return jsonify(first_line + " " + second_line)
+            
+            query = pd.get_dummies(pd.DataFrame(json_))
+            #query = query.reindex(columns=model_columns, fill_value=0)
+                  
                 
-
-            prediction = list(clf.predict(query))
             if(len(prediction) > 1):
                 first_line = "request format inconsistant"
                 second_line =  "please send one pridiction at a time"
+                return jsonify(first_line + " " + second_line)
+                
+            prediction = list(clf.predict(query))
                         
 
             #return jsonify({'prediction': [int(x) for x in prediction]})
