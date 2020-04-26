@@ -4,7 +4,7 @@ import shutil
 import time
 import traceback
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import pandas as pd
 from sklearn.externals import joblib
 
@@ -46,14 +46,19 @@ def predict():
                   
             prediction = list(clf.predict(query))
             if(len(prediction) > 1):
+                global first_line
+                global second_line
+                
                 first_line = "request format inconsistant"
                 second_line =  "please send one pridiction at a time"
+                redirect(url_for('test'))
                 return jsonify(first_line + " " + second_line)
                 
 
             
             first_line = "A new prediction has been made"
             second_line = "your prediction is: " + str(prediction[0])
+            redirect(url_for('test'))
             #return jsonify({'prediction': [int(x) for x in prediction]})
             return jsonify(first_line + " " + second_line)
 
