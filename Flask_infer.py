@@ -48,8 +48,10 @@ def predict():
                 second_line =  "please send one pridiction at a time"
                 return jsonify(first_line + " " + second_line)
                 
-                        
 
+                   
+            first_line = "A new prediction has been made"
+            second_line = "your prediction is: " + prediction[0]
             #return jsonify({'prediction': [int(x) for x in prediction]})
             return jsonify(first_line + " " + second_line)
 
