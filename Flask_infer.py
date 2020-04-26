@@ -45,7 +45,7 @@ def predict():
             print(" ")
             print(" ")
             print(" ")
-            if(type(query) ==  str):
+            if(type(json_) ==  str):
                 first_line = "request format inconsistant"
                 second_line =  "please dont send strings"
                 return jsonify(first_line + " " + second_line)
