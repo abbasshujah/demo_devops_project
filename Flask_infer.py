@@ -54,7 +54,7 @@ def predict():
                         
 
             #return jsonify({'prediction': [int(x) for x in prediction]})
-            return jsonify({first_line + " " + second_line})
+            return jsonify(first_line + " " + second_line)
 
         except Exception as e:
 
